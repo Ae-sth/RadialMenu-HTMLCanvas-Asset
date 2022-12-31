@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+      "module": "esnext", 
+      "target": "es2019", 
+      "noImplicitAny": true,
+      "sourceMap": false,
+      "strict": true,
+      "rootDir": "src",
+      "outDir": "dist",
+      "emitDecoratorMetadata": true, 
+      "experimentalDecorators": true, 
+      "declaration": false,
+      "importHelpers": false,
+      "forceConsistentCasingInFileNames": true,
+      "moduleResolution": "Node", 
+      "esModuleInterop": true,
+      "skipLibCheck": true, 
+      "baseUrl": ".",
+     },
+    "exclude": ["node_modules", "dist"]
+  }

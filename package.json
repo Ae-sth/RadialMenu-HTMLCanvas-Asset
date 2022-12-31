@@ -1,0 +1,24 @@
+{
+  "name": "radialmenu-htmlcanvas-asset",
+  "version": "1.0.0",
+  "description": "An implementation of the radial menu in HTML5 canvas; the best so far.",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsc --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ae-sth/RadialMenu-HTMLCanvas-Asset.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ae-sth/RadialMenu-HTMLCanvas-Asset/issues"
+  },
+  "homepage": "https://github.com/Ae-sth/RadialMenu-HTMLCanvas-Asset#readme",
+  "dependencies": {
+    "typescript": "^4.9.4"
+  }
+}
