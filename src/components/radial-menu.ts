@@ -7,15 +7,16 @@ import { RadialOptionN } from "src/interfaces/radial-option.js";
 export default class RadialMenu {
     
     public static context: CanvasRenderingContext2D;
-    public static config: (RadialOptionN.TerminalOptionConfigT | RadialOptionN.TransientOptionConfigT)[]
+    public static config: (RadialOptionN.TerminalOptionConfigT | RadialOptionN.TransientOptionConfigT)[];
+    public static action: Function | null = null;
     
     rootPosition: GeometryN.PointT;
-    root: RootOption;
+    rootOption: RootOption;
 
     constructor(eventPosition: GeometryN.PointT){
         this.rootPosition = eventPosition
-        this.root = new RootOption({ subOptions: RadialMenu.config }, eventPosition).buildSubOptions()
-
+        this.rootOption = new RootOption({ subOptions: RadialMenu.config }, eventPosition).buildSubOptions()
+        
     }
 
     public static bind(context: CanvasRenderingContext2D){
@@ -27,28 +28,26 @@ export default class RadialMenu {
     }
     
     render(){
-        
-        this.root
+        this.rootOption
             .render()
 
     }
-
 
     init(){
         this.render()
     }
     
     update(cursorPosition: GeometryN.PointT){
-
-        //
-        
-        this.root.process(cursorPosition)
+        this.rootOption.process(cursorPosition)
         this.render()
+
     }
     
     exec(){
-
-
+        if(RadialMenu.action)
+            RadialMenu.action()
+        
+        RadialMenu.action = null
     }
 
 }

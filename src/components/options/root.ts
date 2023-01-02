@@ -12,6 +12,7 @@ export default class RootOption implements RadialOptionN.RootOptionI {
 
     config: RadialOptionN.RootOptionConfigT
     position: GeometryN.PointT
+
     constructor(config: RadialOptionN.RootOptionConfigT, position: GeometryN.PointT, parentOption?: TransientOption){
         
         this.config = config
@@ -27,9 +28,9 @@ export default class RootOption implements RadialOptionN.RootOptionI {
         .map((cfg, index)=>{
 
             if("handler" in cfg) {
-                return new TerminalOption(cfg, index, this).updateGeometry(this.position)
+                return new TerminalOption(cfg, index+1, this).updateGeometry(this.position)
             } else {
-                return new TransientOption(cfg, index, this).buildSubOptions().updateGeometry(this.position)
+                return new TransientOption(cfg, index+1, this).updateGeometry(this.position).buildSubOptions()
             }
 
         })
@@ -46,13 +47,16 @@ export default class RootOption implements RadialOptionN.RootOptionI {
     }
     
     process(eventPosition: GeometryN.PointT){
-        for(const option of this._subOptions){
-            const hit = Interaction.isWithin(eventPosition, option.boundingBox)
-            if(Interaction.isWithin(eventPosition, option.boundingBox)){
-
+        for(const option of this.getSubOptions()){
+            if(Interaction.isWithin(eventPosition, option.boundingBox, 0)){
                 option.select()
+            } else if(Interaction.isBeyond(eventPosition, option.boundingBox.origin, option.boundingBox.outerRadius)) {
+                if("handler" in option){} else {
+                    option.process(eventPosition)
+                }
             } else {
                 if(option.selected) option.unselect()
+
             }
         }
     }

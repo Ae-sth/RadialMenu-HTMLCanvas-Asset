@@ -5,15 +5,13 @@ import Scene from "./misc/scene.js"
 
 export default async function setup(context: CanvasRenderingContext2D){
     
-    Scene.bind(context)
     RadialMenu.bind(context)
-    
     const radialMenuConfig: RadialMenuN.ConfigT = [
-        {
+
+         {
             label: "equal",
             handler: function(){console.log("equal")}
-        },
-        {
+        },       {
             label: "add",
             handler: function(){console.log("add")}
         },
@@ -33,8 +31,7 @@ export default async function setup(context: CanvasRenderingContext2D){
     ] 
     RadialMenu.load(radialMenuConfig)
     
-    console.log(RadialMenu.config)
-
+    Scene.bind(context)
     Scene.render()
     
     const cursor_offset = 8
@@ -59,7 +56,7 @@ export default async function setup(context: CanvasRenderingContext2D){
         function handleMoveEvent(event: MouseEvent){
             const eventPosition = [event.clientX-cursor_offset, event.clientY-cursor_offset] as [number, number]
 
-            console.log("Move")
+            console.log(`Move to [${eventPosition}]`)
             Scene.render()
             menu.update(eventPosition)
 
@@ -72,8 +69,9 @@ export default async function setup(context: CanvasRenderingContext2D){
             context.canvas.removeEventListener("mouseup", handleReleaseEvent, false)
 
             console.log("Release")
-            Scene.render()
             menu.exec()
+            Scene.render()
         }
     }
+
 }

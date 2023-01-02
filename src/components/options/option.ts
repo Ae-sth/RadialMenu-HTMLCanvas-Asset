@@ -4,15 +4,15 @@ import RootOption from "./root.js"
 import TransientOption from "./transient.js"
 import { RadialOptionN } from "src/interfaces/radial-option"
 import { GeometryN } from "src/interfaces/geometry"
-import Geometry from "src/utils/geometry.js"
+import Geometry from "../../utils/geometry.js"
 
 export default class Option {
-    private _label: string
-    private _selected: boolean
-    private _parentOption: TransientOption | RootOption
-    private _boundingBox: GeometryN.RadialBoxT
-    private _layer: number
-    private _position: number
+    protected _label: string
+    protected _selected: boolean
+    protected _parentOption: TransientOption | RootOption
+    protected _boundingBox: GeometryN.RadialBoxT
+    protected _layer: number
+    protected _position: number
     config: Partial<RadialOptionN.TransientOptionConfigT & RadialOptionN.TerminalOptionConfigT>
     constructor(config: Partial<RadialOptionN.TransientOptionConfigT & RadialOptionN.TerminalOptionConfigT>, position: number, parentOption: RootOption | TransientOption){
 
@@ -55,25 +55,12 @@ export default class Option {
             origin,
             this._position,
             this._parentOption.config.subOptions!.length,
-            this._layer
+            this._layer,
+            0
         )
 
         return this
     }
 
-    render(){
-        Draw.drawRadialMenuButton(
-            RadialMenu.context,
-            this._boundingBox.origin,
-            this._position,
-            this._parentOption.config.subOptions!.length,
-            this._layer
-        )
-        
-        if(this.selected) Draw.drawBoundingBox(
-            RadialMenu.context,
-            this.boundingBox
-        )
-
-    }
+    
 }
