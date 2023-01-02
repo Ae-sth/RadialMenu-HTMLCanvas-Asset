@@ -1,3 +1,3 @@
-- [ ] Detect long-press (1s hold).
+- [x] Detect long-press (1s hold).
 - [ ] Build the ring geometry.
 - [ ] Build detection for selecting options
