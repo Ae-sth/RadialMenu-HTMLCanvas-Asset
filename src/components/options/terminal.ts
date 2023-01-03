@@ -5,14 +5,18 @@ import RootOption from "./root.js"
 import Draw from "../../utils/draw.js"
 import RadialMenu from "../radial-menu.js"
 import Option from "./option.js"
+import Geometry from "../../utils/geometry.js"
 
 export default class TerminalOption extends Option implements RadialOptionN.TerminalOptionI {
 
     private _handler: Function
+    private _icon: Function | undefined
 
     constructor(config: RadialOptionN.TerminalOptionConfigT, position: number, parentOption: RootOption | TransientOption){
         
         super(config, position, parentOption)
+        
+        this._icon = config.icon
         this._handler = config.handler
     }
     
@@ -37,6 +41,24 @@ export default class TerminalOption extends Option implements RadialOptionN.Term
             this._layer,
             0
         )
+        
+        let centerButtonPosition =  Geometry.polarToCartesian(
+            (this.boundingBox.innerRadius+this.boundingBox.outerRadius)/2,
+            (this.boundingBox.innerAngleRange[1]+this.boundingBox.innerAngleRange[0])/2
+        )
+
+        let orientation = Math.atan2(...centerButtonPosition.reverse() as GeometryN.PointT)
+
+        centerButtonPosition = centerButtonPosition
+            .map((coord, index)=>coord+this.boundingBox.origin[index])
+
+        if(this._icon){
+            this._icon(
+                RadialMenu.context,
+                centerButtonPosition,
+                -orientation,
+            )
+        }
         
         if(this.selected) {
             Draw.drawBoundingBox(

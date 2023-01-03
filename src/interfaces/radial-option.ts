@@ -5,11 +5,13 @@ export namespace RadialOptionN {
     export type TransientOptionConfigT = {
 
         label: string;  
+        icon?: Function;
         subOptions: (TransientOptionConfigT | TerminalOptionConfigT)[]
     }
 
     export type TerminalOptionConfigT = {
         label: string;
+        icon?: Function;
         handler: Function;
     }
 

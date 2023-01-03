@@ -2,6 +2,7 @@ import RadialMenu from "./components/radial-menu.js"
 import { GeometryN } from "./interfaces/geometry.js"
 import { RadialMenuN } from "./interfaces/radial-menu.js"
 import Scene from "./misc/scene.js"
+import Icon from "./utils/icon.js"
 
 export default async function setup(context: CanvasRenderingContext2D){
     
@@ -10,6 +11,7 @@ export default async function setup(context: CanvasRenderingContext2D){
 
          {
             label: "equal",
+            icon: Icon.plus,
             handler: function(){console.log("equal")}
         },       {
             label: "add",

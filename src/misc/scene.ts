@@ -1,3 +1,4 @@
+import Icon from "../utils/icon.js"
 import Draw from "../utils/draw.js"
 
 export default class Scene {
@@ -29,6 +30,14 @@ export default class Scene {
             3,
             1
         )*/
+
+
+        Icon.plus(
+            context,
+            [canvas_center_x, canvas_center_y],
+            0,
+            100
+        )
     
         function render_scene(){
             context.clearRect(0, 0, context.canvas.width, context.canvas.height)

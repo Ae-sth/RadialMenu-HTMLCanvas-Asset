@@ -41,4 +41,12 @@ export default class Geometry {
                 origin: rootPosition
             }
     }
+
+    public static polarToCartesian(radius: number, angle: number){
+
+        return [
+            radius*Math.sin(angle),
+            radius*Math.cos(angle)
+        ]
+    }
 }

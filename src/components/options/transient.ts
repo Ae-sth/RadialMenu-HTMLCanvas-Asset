@@ -6,12 +6,15 @@ import Draw from "../../utils/draw.js"
 import RadialMenu from "../radial-menu.js"
 import { GeometryN } from "src/interfaces/geometry.js"
 import Interaction from "../../utils/interaction.js"
+import Geometry from "../../utils/geometry.js"
 
 export default class TransientOption extends Option implements RadialOptionN.TransientOptionI {
     private _subOptions: (TransientOption | TerminalOption)[]
+    private _icon: Function | undefined
     constructor(config: RadialOptionN.TransientOptionConfigT, position: number, parentOption: RootOption | TransientOption){
         super(config, position, parentOption)
 
+        this._icon = config.icon
         this.config = config
         this._subOptions = [] 
 
@@ -52,6 +55,7 @@ export default class TransientOption extends Option implements RadialOptionN.Tra
     }
 
     render(){
+
         Draw.drawRadialMenuButton(
             RadialMenu.context,
             this._boundingBox.origin,
@@ -60,6 +64,24 @@ export default class TransientOption extends Option implements RadialOptionN.Tra
             this._layer,
             0
         )
+
+        let centerButtonPosition =  Geometry.polarToCartesian(
+            (this.boundingBox.innerRadius+this.boundingBox.outerRadius)/2,
+            (this.boundingBox.innerAngleRange[1]+this.boundingBox.innerAngleRange[0])/2
+        )
+
+        let orientation = Math.atan2(...centerButtonPosition.reverse() as GeometryN.PointT)
+
+        centerButtonPosition = centerButtonPosition
+            .map((coord, index)=>coord+this.boundingBox.origin[index])
+
+        if(this._icon){
+            this._icon(
+                RadialMenu.context,
+                centerButtonPosition,
+                orientation,
+            )
+        }
         
         if(this.selected) {
             Draw.drawBoundingBox(
