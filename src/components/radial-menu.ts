@@ -9,6 +9,19 @@ export default class RadialMenu {
     public static context: CanvasRenderingContext2D;
     public static config: (RadialOptionN.TerminalOptionConfigT | RadialOptionN.TransientOptionConfigT)[];
     public static action: Function | null = null;
+
+
+    
+    public static bind(context: CanvasRenderingContext2D){
+        RadialMenu.context = context
+    }
+
+    public static load(config: RadialMenuN.ConfigT){
+        RadialMenu.config =  config 
+    }
+    
+
+
     
     rootPosition: GeometryN.PointT;
     rootOption: RootOption;
@@ -19,13 +32,6 @@ export default class RadialMenu {
         
     }
 
-    public static bind(context: CanvasRenderingContext2D){
-        RadialMenu.context = context
-    }
-
-    public static load(config: RadialMenuN.ConfigT){
-        RadialMenu.config =  config 
-    }
     
     render(){
         this.rootOption

@@ -36,10 +36,6 @@ export default class TransientOption extends Option implements RadialOptionN.Tra
         return this
     }
 
-    getSubOptions(){
-        return this._subOptions
-    }
-
     process(eventPosition: GeometryN.PointT){
         for(const option of this._subOptions){
             if(Interaction.isWithin(eventPosition, option.boundingBox, 0)){

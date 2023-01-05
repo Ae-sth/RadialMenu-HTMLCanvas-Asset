@@ -6,7 +6,7 @@ import { RadialOptionN } from "src/interfaces/radial-option"
 import { GeometryN } from "src/interfaces/geometry"
 import Geometry from "../../utils/geometry.js"
 
-export default class Option {
+export default class Option implements RadialOptionN.OptionI {
     protected _label: string
     protected _selected: boolean
     protected _parentOption: TransientOption | RootOption

@@ -10,8 +10,8 @@ export default class RootOption implements RadialOptionN.RootOptionI {
     private _subOptions: (TransientOption | TerminalOption)[]
     private _layer: null
 
-    config: RadialOptionN.RootOptionConfigT
-    position: GeometryN.PointT
+    public config: RadialOptionN.RootOptionConfigT
+    public position: GeometryN.PointT
 
     constructor(config: RadialOptionN.RootOptionConfigT, position: GeometryN.PointT, parentOption?: TransientOption){
         
@@ -38,16 +38,13 @@ export default class RootOption implements RadialOptionN.RootOptionI {
         return this
     }
 
-    getSubOptions(){
-        return this._subOptions
-    }
 
     get layer(){
         return this._layer
     }
     
     process(eventPosition: GeometryN.PointT){
-        for(const option of this.getSubOptions()){
+        for(const option of this._subOptions){
             if(Interaction.isWithin(eventPosition, option.boundingBox, 0)){
                 option.select()
             } else if(Interaction.isBeyond(eventPosition, option.boundingBox.origin, option.boundingBox.outerRadius)) {

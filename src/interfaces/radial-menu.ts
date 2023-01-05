@@ -5,5 +5,7 @@ export namespace RadialMenuN {
     export type ConfigT = 
         RadialOptionN.RootOptionConfigT["subOptions"]
 
-    
+    export interface RadialMenuI {
+        
+    }
 }
