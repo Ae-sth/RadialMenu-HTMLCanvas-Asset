@@ -1,4 +1,4 @@
-import { GeometryN } from "src/interfaces/geometry";
+import { GeometryN } from "../interfaces/geometry";
 
 export default class Interaction {
     public static isWithin(point: GeometryN.PointT, boundingBox: GeometryN.RadialBoxT, layer: number, phase: number=layer*Math.PI/5){

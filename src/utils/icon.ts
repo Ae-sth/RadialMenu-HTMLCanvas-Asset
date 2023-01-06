@@ -1,4 +1,4 @@
-import { GeometryN } from "src/interfaces/geometry";
+import { GeometryN } from "../interfaces/geometry";
 
 export default class Icon {
     public static plus(

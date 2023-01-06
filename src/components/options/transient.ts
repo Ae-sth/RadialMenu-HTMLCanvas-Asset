@@ -1,10 +1,10 @@
-import { RadialOptionN } from "src/interfaces/option"
+import { RadialOptionN } from "../../interfaces/option"
 import { TerminalOption } from "./terminal.js"
 import { RootOption } from "./root.js"
 import Option from "./option.js"
 import Draw from "../../utils/draw.js"
 import { RadialMenu } from "../../core/menu.js"
-import { GeometryN } from "src/interfaces/geometry.js"
+import { GeometryN } from "../../interfaces/geometry"
 import Interaction from "../../utils/interaction.js"
 import Geometry from "../../utils/geometry.js"
 

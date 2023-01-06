@@ -1,12 +1,12 @@
-import { GeometryN } from "src/interfaces/geometry"
-import { RadialOptionN } from "src/interfaces/option"
+import { GeometryN } from "../../interfaces/geometry"
+import { RadialOptionN } from "../../interfaces/option"
 import { TransientOption } from "./transient.js"
 import { RootOption } from "./root.js"
 import Draw from "../../utils/draw.js"
 import { RadialMenu } from "../../core/menu.js"
 import Option from "./option.js"
 import Geometry from "../../utils/geometry.js"
-import { HandlerN } from "src/interfaces/handler.js"
+import { HandlerN } from "../../interfaces/handler"
 
 export class TerminalOption extends Option implements RadialOptionN.TerminalOptionI {
 

@@ -1,9 +1,7 @@
-import Draw from "../../utils/draw.js"
-import { RadialMenu } from "src"
 import { RootOption } from "./root.js"
 import { TransientOption } from "./transient.js"
-import { RadialOptionN } from "src/interfaces/option"
-import { GeometryN } from "src/interfaces/geometry"
+import { RadialOptionN } from "../../interfaces/option"
+import { GeometryN } from "../../interfaces/geometry"
 import Geometry from "../../utils/geometry.js"
 
 export default class Option implements RadialOptionN.OptionI {

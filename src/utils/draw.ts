@@ -1,4 +1,4 @@
-import { GeometryN } from "src/interfaces/geometry";
+import { GeometryN } from "../interfaces/geometry";
 import Geometry from "./geometry.js";
 
 
