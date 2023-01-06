@@ -1,14 +1,19 @@
 import { GeometryN } from "src/interfaces/geometry";
-import { RadialMenuN } from "src/interfaces/radial-menu";
+import { RadialMenuN } from "src/interfaces/menu";
 import { RootOption } from "../components/index.js";
-import { RadialOptionN } from "src/interfaces/radial-option.js";
+import { RadialOptionN } from "src/interfaces/option.js";
 import { SceneN } from "src/interfaces/scene.js";
+import { HandlerN } from "src/interfaces/handler.js";
 
 export class RadialMenu implements RadialMenuN.RadialMenuI {
     
     public static scene: SceneN.SceneT;
-    public static config: (RadialOptionN.TerminalOptionConfigT | RadialOptionN.TransientOptionConfigT)[];
+
+    public static position: GeometryN.PointT | null = null
+    public static config: (RadialOptionN.TerminalOptionConfigT | RadialOptionN.TransientOptionConfigT)[] | null = null;
+    
     public static action: Function | null = null;
+    public static actionType: HandlerN.HandlerT | null = null
 
 
     
@@ -50,13 +55,18 @@ export class RadialMenu implements RadialMenuN.RadialMenuI {
         }
     }
 
-    
-    rootPosition: GeometryN.PointT;
+    public static reset(){
+        RadialMenu.action = null
+        RadialMenu.actionType = null
+        RadialMenu.position = null 
+        //RadialMenu.config = null
+    }
+
     rootOption: RootOption;
 
     constructor(eventPosition: GeometryN.PointT){
-        this.rootPosition = eventPosition
-        this.rootOption = new RootOption({ subOptions: RadialMenu.config }, eventPosition).buildSubOptions()
+        RadialMenu.position =  eventPosition
+        this.rootOption = new RootOption({ subOptions: RadialMenu.config! }, eventPosition).buildSubOptions()
         
     }
 
@@ -78,10 +88,22 @@ export class RadialMenu implements RadialMenuN.RadialMenuI {
     }
     
     public exec(){
-        if(RadialMenu.action)
-            RadialMenu.action()
+        if(RadialMenu.action && RadialMenu.actionType){
+            switch(RadialMenu.actionType){
+                case "ARGUMENTLESS":
+                    RadialMenu.action()
+                    break
+                case "POSITION-BASED":
+                    RadialMenu.action(RadialMenu.position)
+                    break
+                case "STACK-BASED":
+                    RadialMenu.action(RadialMenu.scene.argumentSelectionStack)
+            }
+
+        }
+            
         
-        RadialMenu.action = null
+        RadialMenu.reset()
     }
 
 }

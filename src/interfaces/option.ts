@@ -1,6 +1,7 @@
 import { RootOption } from "src/components/options/root";
 import { TransientOption } from "src/components/options/transient";
 import { GeometryN } from "./geometry";
+import { HandlerN } from "./handler";
 
 export namespace RadialOptionN {
 
@@ -17,6 +18,7 @@ export namespace RadialOptionN {
 
     export type TerminalOptionConfigT = OptionConfigT & {
         handler: Function;
+        handlerType: HandlerN.HandlerT
     }
 
     export type RootOptionConfigT = {

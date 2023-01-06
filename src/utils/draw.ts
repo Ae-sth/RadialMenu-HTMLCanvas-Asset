@@ -66,28 +66,4 @@ export default class Draw {
         context.stroke()
         context.restore()
     }
-
-    // 
-    public static drawDot(
-        context: CanvasRenderingContext2D,
-        position: GeometryN.PointT
-    ) {
-
-
-        context.save()
-    
-        // styling
-        context.fillStyle = "white";
-        context.lineWidth = 2;
-
-        context.strokeStyle = 'black';
-        
-        // drawing
-        context.beginPath();
-        context.arc(...position, 2, 0, 2 * Math.PI, false);
-        context.fill();
-        context.stroke();
-
-        context.restore()
-    }
 }

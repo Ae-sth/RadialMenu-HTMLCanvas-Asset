@@ -1,5 +1,5 @@
 import { GeometryN } from "./geometry";
-import { RadialOptionN } from "./radial-option";
+import { RadialOptionN } from "./option";
 
 export namespace RadialMenuN {
 
@@ -14,11 +14,6 @@ export namespace RadialMenuN {
      * A simple radial menu.
      */
     export interface RadialMenuI {
-
-        /**
-         * Contains the position where the radial menu was created.
-         */
-        rootPosition: GeometryN.PointT;
 
         /**
          * Container of all radial buttons.

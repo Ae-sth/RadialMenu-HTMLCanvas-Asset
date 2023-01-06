@@ -1,5 +1,5 @@
 import { GeometryN } from "src/interfaces/geometry"
-import { RadialOptionN } from "src/interfaces/radial-option"
+import { RadialOptionN } from "src/interfaces/option"
 import { TerminalOption }  from "./terminal.js"
 import { TransientOption } from "./transient.js"
 import Interaction from "../../utils/interaction.js"

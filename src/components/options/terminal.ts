@@ -1,16 +1,18 @@
 import { GeometryN } from "src/interfaces/geometry"
-import { RadialOptionN } from "src/interfaces/radial-option"
+import { RadialOptionN } from "src/interfaces/option"
 import { TransientOption } from "./transient.js"
 import { RootOption } from "./root.js"
 import Draw from "../../utils/draw.js"
-import { RadialMenu } from "../../core/radial-menu.js"
+import { RadialMenu } from "../../core/menu.js"
 import Option from "./option.js"
 import Geometry from "../../utils/geometry.js"
+import { HandlerN } from "src/interfaces/handler.js"
 
 export class TerminalOption extends Option implements RadialOptionN.TerminalOptionI {
 
     private _handler: Function
     private _icon: Function | undefined
+    private _handlerType: HandlerN.HandlerT
 
     constructor(config: RadialOptionN.TerminalOptionConfigT, position: number, parentOption: RootOption | TransientOption){
         
@@ -18,16 +20,19 @@ export class TerminalOption extends Option implements RadialOptionN.TerminalOpti
         
         this._icon = config.icon
         this._handler = config.handler
+        this._handlerType = config.handlerType
     }
     
     select(): void {
         this._selected = true
-        RadialMenu.action = this._handler 
+        RadialMenu.action = this._handler
+        RadialMenu.actionType = this._handlerType
     }
     
     unselect(): void {
         this._selected = false
         RadialMenu.action = null
+        RadialMenu.actionType = null
     }
 
     get handler(){return this._handler}

@@ -1,6 +1,6 @@
-import { RadialMenu } from "../src/core/radial-menu.js"
+import { RadialMenu } from "../src/core/menu.js"
 import { GeometryN } from "../src/interfaces/geometry.js"
-import { RadialMenuN } from "../src/interfaces/radial-menu.js"
+import { RadialMenuN } from "../src/interfaces/menu.js"
 import Scene from "../src/misc/scene.js"
 import Icon from "../src/utils/icon.js"
 
@@ -15,21 +15,25 @@ export default async function setup(context: CanvasRenderingContext2D){
          {
             label: "equal",
             icon: Icon.plus,
-            handler: function(){console.log("equal")}
+            handler: function(){console.log("equal")},
+            handlerType: "ARGUMENTLESS"
         },       {
             label: "add",
-            handler: function(){console.log("add")}
+            handler: function(pos: any){console.log(pos)},
+            handlerType: "POSITION-BASED"
         },
         {
             label: "more",
             subOptions: [
                 {
                     label: "multiply",
-                    handler: function(){console.log("multiply")}
+                    handler: function(args: any){console.log(args)},
+                    handlerType: "STACK-BASED"
                 },
                 {
                     label: "division",
-                    handler: function(){console.log("division")}
+                    handler: function(){console.log("division")},
+                    handlerType: "ARGUMENTLESS"
                 }
             ]
         }
