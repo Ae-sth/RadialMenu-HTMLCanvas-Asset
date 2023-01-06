@@ -1,10 +1,10 @@
 import { GeometryN } from "src/interfaces/geometry"
 import { RadialOptionN } from "src/interfaces/radial-option"
-import TerminalOption from "./terminal.js"
-import TransientOption from "./transient.js"
+import { TerminalOption }  from "./terminal.js"
+import { TransientOption } from "./transient.js"
 import Interaction from "../../utils/interaction.js"
 
-export default class RootOption implements RadialOptionN.RootOptionI {
+export class RootOption implements RadialOptionN.RootOptionI {
 
     private _parentOption: null
     private _subOptions: (TransientOption | TerminalOption)[]

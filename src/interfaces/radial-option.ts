@@ -1,5 +1,5 @@
-import RootOption from "src/components/options/root";
-import TransientOption from "src/components/options/transient";
+import { RootOption } from "src/components/options/root";
+import { TransientOption } from "src/components/options/transient";
 import { GeometryN } from "./geometry";
 
 export namespace RadialOptionN {

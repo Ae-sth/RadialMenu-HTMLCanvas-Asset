@@ -1,14 +1,14 @@
 import { RadialOptionN } from "src/interfaces/radial-option"
-import TerminalOption from "./terminal.js"
-import RootOption from "./root.js"
+import { TerminalOption } from "./terminal.js"
+import { RootOption } from "./root.js"
 import Option from "./option.js"
 import Draw from "../../utils/draw.js"
-import RadialMenu from "../radial-menu.js"
+import { RadialMenu } from "../../core/radial-menu.js"
 import { GeometryN } from "src/interfaces/geometry.js"
 import Interaction from "../../utils/interaction.js"
 import Geometry from "../../utils/geometry.js"
 
-export default class TransientOption extends Option implements RadialOptionN.TransientOptionI {
+export  class TransientOption extends Option implements RadialOptionN.TransientOptionI {
     private _subOptions: (TransientOption | TerminalOption)[]
     private _icon: Function | undefined
     constructor(config: RadialOptionN.TransientOptionConfigT, position: number, parentOption: RootOption | TransientOption){
@@ -53,7 +53,7 @@ export default class TransientOption extends Option implements RadialOptionN.Tra
     render(){
 
         Draw.drawRadialMenuButton(
-            RadialMenu.context,
+            RadialMenu.scene.context,
             this._boundingBox.origin,
             this._position,
             this._parentOption.config.subOptions!.length,
@@ -73,7 +73,7 @@ export default class TransientOption extends Option implements RadialOptionN.Tra
 
         if(this._icon){
             this._icon(
-                RadialMenu.context,
+                RadialMenu.scene.context,
                 centerButtonPosition,
                 orientation,
             )
@@ -81,7 +81,7 @@ export default class TransientOption extends Option implements RadialOptionN.Tra
         
         if(this.selected) {
             Draw.drawBoundingBox(
-                RadialMenu.context,
+                RadialMenu.scene.context,
                 this.boundingBox
             )
 

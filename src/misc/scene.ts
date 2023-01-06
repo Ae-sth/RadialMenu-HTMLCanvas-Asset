@@ -1,9 +1,11 @@
 import Icon from "../utils/icon.js"
 import Draw from "../utils/draw.js"
+import { SceneN } from "src/interfaces/scene.js"
 
 export default class Scene {
     
     public static context: CanvasRenderingContext2D
+    public static cursor_offset = 8
 
     public static bind(context: CanvasRenderingContext2D){
         Scene.context = context    
@@ -21,16 +23,6 @@ export default class Scene {
 
         const canvas_center_x = context.canvas.width/2
         const canvas_center_y = context.canvas.height/2
-    
-        
-        /*Draw.drawRadialMenuButton(
-            context,
-            [canvas_center_x, canvas_center_y],
-            1,
-            3,
-            1
-        )*/
-
 
         Icon.plus(
             context,

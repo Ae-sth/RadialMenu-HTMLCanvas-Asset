@@ -5,7 +5,10 @@
       "noImplicitAny": true,
       "sourceMap": false,
       "strict": true,
-      "rootDir": "src",
+      "rootDirs": [
+        "src",
+        "example/src"
+      ],
       "outDir": "dist",
       "emitDecoratorMetadata": true, 
       "experimentalDecorators": true, 
@@ -15,7 +18,7 @@
       "moduleResolution": "Node", 
       "esModuleInterop": true,
       "skipLibCheck": true, 
-      "baseUrl": ".",
+      "baseUrl": "."
      },
     "exclude": ["node_modules", "dist"]
   }

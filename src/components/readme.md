@@ -29,7 +29,3 @@ interface TerminalOption {
 
 A meaningful radial-menu-action is one where the last selection is a *terminal* option. If you release the button while the cursor is on some *transient* option nothing happens and the menu pops off.
 
-
----
-
-I can locally know the (layer, number) info at creation by checking the parent attribute and how deep in goes and of course the number is given at creation since it is gonna be a list.
