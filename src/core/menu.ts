@@ -1,9 +1,9 @@
-import { GeometryN } from "src/interfaces/geometry";
-import { RadialMenuN } from "src/interfaces/menu";
-import { RootOption } from "../components/index.js";
-import { RadialOptionN } from "src/interfaces/option.js";
-import { SceneN } from "src/interfaces/scene.js";
-import { HandlerN } from "src/interfaces/handler.js";
+import { GeometryN } from "../interfaces/geometry";
+import { RadialMenuN } from "../interfaces/menu";
+import { RootOption } from "../components/index";
+import { RadialOptionN } from "../interfaces/option";
+import { SceneN } from "../interfaces/scene";
+import { HandlerN } from "../interfaces/handler";
 
 export class RadialMenu implements RadialMenuN.RadialMenuI {
     
