@@ -1,6 +1,6 @@
 import { GeometryN } from "../interfaces/geometry";
 import { RadialMenuN } from "../interfaces/menu";
-import { RootOption } from "../components/index";
+import { RootOption } from "../components/index.js";
 import { RadialOptionN } from "../interfaces/option";
 import { SceneN } from "../interfaces/scene";
 import { HandlerN } from "../interfaces/handler";
